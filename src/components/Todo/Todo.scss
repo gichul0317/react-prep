@@ -1,0 +1,20 @@
+@import '../../partials/colors';
+@import '../../partials/mixin';
+
+.todo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+  &__list {
+    width: 500px;
+    border: 1px solid $blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0;
+  }
+}
