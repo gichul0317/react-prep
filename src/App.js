@@ -1,7 +1,9 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Todo from './components/Todo/Todo';
 import ExpenseItem from './components/Expenseitem/Expenseitem';
+import ExpenseDisplay from './components/ExpenseDisplay/ExpenseDisplay';
 import './partials/_setup.scss';
+import { render } from '@testing-library/react';
 
 function App() {
   const expenses = [
@@ -31,23 +33,28 @@ function App() {
     },
   ];
 
+  // const renderExpenses = function (item) {
+  //   let renderArr = item.map(expense => {
+  //     return (
+  //       <ExpenseDisplay
+  //         key={expense.id}
+  //         title={expense.title}
+  //         amount={expense.amount}
+  //         date={expense.date}
+  //       />
+  //     )
+  //   })
+  //   return renderArr;
+  // }
+
   return (
     <div className="App">
       <h1>Props pass from parent component to direct child component</h1>
-      <ExpenseItem
-        title={expenses[0].title}
-        amount={expenses[0].amount}
-        date={expenses[0].date}
-      />
-      <ExpenseItem
-        title={expenses[1].title}
-        amount={expenses[1].amount}
-        date={expenses[1].date}
-      />
-      <ExpenseItem
-        title={expenses[2].title}
-        amount={expenses[2].amount}
-        date={expenses[2].date}
+      {/* {
+        renderExpenses(expenses)
+      } */}
+      <ExpenseDisplay
+        item={expenses}
       />
     </div>
   );
