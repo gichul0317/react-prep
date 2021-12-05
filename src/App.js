@@ -2,8 +2,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Todo from './components/Todo/Todo';
 import ExpenseItem from './components/Expenseitem/Expenseitem';
 import ExpenseDisplay from './components/ExpenseDisplay/ExpenseDisplay';
-import './partials/_setup.scss';
+import NewExpense from './components/NewExpense/NewExpense';
 import { render } from '@testing-library/react';
+import './partials/_setup.scss';
 
 function App() {
   const expenses = [
@@ -49,10 +50,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Props pass from parent component to direct child component</h1>
-      {/* {
-        renderExpenses(expenses)
-      } */}
+      <NewExpense />
       <ExpenseDisplay
         item={expenses}
       />

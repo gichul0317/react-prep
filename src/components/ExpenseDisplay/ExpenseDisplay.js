@@ -2,9 +2,24 @@ import ExpenseItem from '../Expenseitem/Expenseitem';
 import '../ExpenseDisplay/ExpenseDisplay.scss';
 
 function ExpenseDisplay(props) {
+  const renderArr = function (item) {
+    let rendering = item.map(res => {
+      console.log(res);
+      return (
+        <ExpenseItem
+          key={res.id}
+          title={res.title}
+          amount={res.amount}
+          date={res.date}
+        />
+      )
+    })
+    return rendering;
+  }
+
   return (
     <div className="expenses">
-      <ExpenseItem
+      {/* <ExpenseItem
         title={props.item[0].title}
         amount={props.item[0].amount}
         date={props.item[0].date}
@@ -23,7 +38,11 @@ function ExpenseDisplay(props) {
         title={props.item[3].title}
         amount={props.item[3].amount}
         date={props.item[3].date}
-      />
+      /> */}
+      {
+        renderArr(props.item)
+      }
+
     </div>
   )
 
