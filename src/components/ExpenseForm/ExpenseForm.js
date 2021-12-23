@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../ExpenseForm/ExpenseForm.scss';
 
-function ExpenseForm() {
+function ExpenseForm(props) {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
@@ -26,8 +26,7 @@ function ExpenseForm() {
       amount: amount,
       date: new Date(date),
     };
-    console.log(expenseData);
-
+    props.submittedData(expenseData);
     // delete inputs and back to initial state
     setTitle('');
     setAmount('');

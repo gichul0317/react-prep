@@ -1,27 +1,30 @@
-import ExpenseDate from '../ExpenseDate/ExpenseDate';
 import Card from '../Card/Card';
+import ExpenseDate from '../ExpenseDate/ExpenseDate';
 import { useState } from 'react';
 import '../Expenseitem/Expenseitem.scss';
 
 function ExpenseItem(props) {
-  const [title, setTitle] = useState(props.title);
-
-  const btnHandler = () => {
-    setTitle('updated...');
-  }
+  const expenseData = [...props.data];
 
   return (
     <>
-      <Card className="expense">
-        <ExpenseDate
-          date={props.date}
-        />
-        <div className="expense__description">
-          <h2 className="expense__title">{title}</h2>
-          <p className="expense__price">${props.amount}</p>
-        </div>
-        <button onClick={btnHandler}>change title</button>
-      </Card>
+      {
+        expenseData.map((item, i) => {
+          const month = item.date.toLocaleString('en-us', { month: 'long' });
+          const year = item.date.getFullYear();
+          const day = item.date.toLocaleString('en-us', { day: '2-digit' })
+
+          return (
+            <Card className="expense-item" key={i}>
+              <ExpenseDate month={month} year={year} day={day} />
+              <div className="expense-item__description">
+                <h2>{item.title}</h2>
+                <p className="expense-item__price">${item.amount}</p>
+              </div>
+            </Card>
+          )
+        })
+      }
     </>
   )
 }
