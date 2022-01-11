@@ -1,17 +1,28 @@
-import ExpenseItem from './components/Expenseitem/Expenseitem';
-import ExpenseDisplay from './components/ExpenseDisplay/ExpenseDisplay';
 import NewExpense from './components/NewExpense/NewExpense';
-import { render } from '@testing-library/react';
 import { expenses } from './data/expense/expense';
 import Expenses from './components/Expenses/Expenses';
-import Card from './components/Card/Card';
 import './partials/_setup.scss';
+import { useState } from 'react/cjs/react.development';
 
 function App() {
   const expenseData = [...expenses];
+  const [newexpensedata, setNewExpenseData] = useState(expenseData);
+
+  const addExpenseHandler = (expense) => {
+    console.log('In app.js');
+    console.log(expense);
+    // setExpenseData([expense, ...expenseData]);
+    setNewExpenseData((prevState) => {
+      return [expense, ...prevState];
+    })
+  };
+
 
   return (
-    <Expenses data={expenseData} />
+    <>
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses data={newexpensedata} />
+    </>
   );
 }
 
